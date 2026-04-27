@@ -40,10 +40,17 @@ def cargar_niveles():
         df = pd.read_excel(EXCEL_PATH, sheet_name="Niveles Operativos")
         nombres = df['Empresas'].astype(str).str.strip()
         abreviaturas = df['Abreviatura'].astype(str).str.strip()
-        niveles = {nombres[i]: abreviaturas[i] for i in range(len(df))}
+        # Filtrar aquellos donde el nombre no sea 'nan' ni vacío
+        niveles = {}
+        for i in range(len(df)):
+            nombre = nombres.iloc[i]
+            abrev = abreviaturas.iloc[i]
+            if nombre and nombre != 'nan' and abrev and abrev != 'nan':
+                niveles[nombre] = abrev
         return niveles
     except Exception as e:
         st.error(f"Error cargando Niveles: {e}")
+        # Fallback manual (sin 'nan')
         return {"Corporativo":"CO","Tienda":"TD","Centro de Distribución":"CD","Logi Express":"LE","Smartech":"ST"}
 
 @st.cache_data
