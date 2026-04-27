@@ -14,19 +14,19 @@ import time
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception, before_sleep
 
 # ==================================================
-# 🔧 RUTAS (ajusta según tu carpeta en Drive)
+# 🔧 RUTAS (ARCHIVOS EN EL MISMO DIRECTORIO - Streamlit Cloud)
 # ==================================================
-BASE_DIR = "/content/drive/MyDrive/Sistema SGC Daka"
-EXCEL_PATH = os.path.join(BASE_DIR, "Listas Maestras de Documentos.xlsx")
-LOGO_PATH = os.path.join(BASE_DIR, "logo_daka.png")
-PLANTILLA_PATH = os.path.join(BASE_DIR, "Formato de Procedimiento.docx")
+BASE_DIR = "."  # directorio actual donde está la app
+EXCEL_PATH = "Listas Maestras de Documentos.xlsx"
+LOGO_PATH = "logo_daka.png"
+PLANTILLA_PATH = "Formato de Procedimiento.docx"
 
 # ==================================================
 # 🤖 CONFIGURACIÓN DE GEMINI
 # ==================================================
 API_KEY = os.getenv("GEMINI_API_KEY")
 if not API_KEY:
-    st.error("❌ No se encontró la API key. Configúrala con os.environ['GEMINI_API_KEY']='AIzaSyAzfOiqAEJSse5kkPxZ8qgNRvtmWNaDYLU'")
+    st.error("❌ No se encontró la API key. Configúrala en los 'Secrets' de Streamlit Cloud con el nombre 'GEMINI_API_KEY'.")
     st.stop()
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-2.5-flash')
