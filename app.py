@@ -29,7 +29,7 @@ if not API_KEY:
     st.error("❌ No se encontró la API key. Configúrala en los 'Secrets' de Streamlit Cloud con el nombre 'GEMINI_API_KEY'.")
     st.stop()
 genai.configure(api_key=API_KEY)
-model = genai.GenerativeModel('Gemini 2.5 Flash')
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 # ==================================================
 # 📥 FUNCIONES DE CARGA DE DATOS
