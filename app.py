@@ -215,9 +215,9 @@ if os.path.exists(LOGO_PATH):
     with col1:
         st.image(Image.open(LOGO_PATH), width=80)
     with col2:
-        st.title("🏛️ Generador Automático de Procedimientos SGC Daka")
+        st.title("🏛️ Generador Automático de Documentos SGC Daka")
 else:
-    st.title("🏛️ Generador Automático de Procedimientos SGC Daka")
+    st.title("🏛️ Generador Automático de Documentos SGC Daka")
     st.caption("(Logo no encontrado)")
 
 with st.sidebar:
