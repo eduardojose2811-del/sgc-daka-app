@@ -1,0 +1,7 @@
+streamlit
+google-generativeai
+docxtpl
+pandas
+openpyxl
+Pillow
+tenacity
